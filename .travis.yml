@@ -9,16 +9,17 @@ script:
  - docker run -e CI=true react-test npm test
 
 after_succes: 
- - docker build -t multi-client ./client 
- - docker build -t multi-nginx ./nginx
- - docker build -t multi-server ./server
- - docker build -t multi-worker ./worker
+ - docker build -t sofilebe/multi-client ./client 
+ - docker build -t sofilebe/multi-nginx ./nginx
+ - docker build -t sofilebe/multi-server ./server
+ - docker build -t sofilebe/multi-worker ./worker
 
 #log im tp the dcoker CLI
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # take images an push them to docker
- - docker push multi-client
- - docker push multi-nginx
- - docker push multi-server
- - docker push multi-worker
+ - docker push sofilebe/multi-client
+ - docker push sofilebe/multi-nginx
+ - docker push sofilebe/multi-server
+ - docker push sofilebe/multi-worker
+
 language: generic
